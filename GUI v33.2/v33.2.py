@@ -9,7 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import pyqtgraph as graph 
+import pyqtgraph as graph
+import GUIgraph 
 import time
 import threading 
 
@@ -561,21 +562,17 @@ class Ui_MainWindow(object):
         pen = graph.mkPen(color=(255, 0, 0))
         
         #graph for temperature
-        self.temperatureGraph = graph.PlotWidget(self.temperatureGraphic)
-        self.temperatureGraph.setGeometry(QtCore.QRect(0, 0, self.temperatureGraphic.width(), self.temperatureGraphic.height()))
-        self.temperatureGraph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.temperatureGraph.setBackground('w')
-        self.temperatureGraph.plot(hour, temperature, pen=pen)
+        
+        self.temperatureGraph = GUIgraph.GUIGraph("temperatureGraph", self.temperatureGraphic,0)
+        self.temperatureGraph.plot(hour, temperature, pen)
+        
         
         
         
         
         
         #graph for prms
-        self.PRMSGraph = graph.PlotWidget(self.PRMSGraphic)
-        self.PRMSGraph.setGeometry(QtCore.QRect(0, 0, self.PRMSGraphic.width(), self.PRMSGraphic.height()))
-        self.PRMSGraph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.PRMSGraph.setBackground('w')
+        self.PRMSGraph = GUIgraph.GUIGraph("PRMSGraph", self.PRMSGraphic,1)
         self.PRMSGraph.plot(hour, temperature, pen=pen)
         
         
@@ -583,10 +580,7 @@ class Ui_MainWindow(object):
         
         
         #graph for rrms
-        self.RRMSGraph = graph.PlotWidget(self.IRMSGraphic)
-        self.RRMSGraph.setGeometry(QtCore.QRect(0, 0, self.IRMSGraphic.width(), self.IRMSGraphic.height()))
-        self.RRMSGraph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.RRMSGraph.setBackground('w')
+        self.RRMSGraph = GUIgraph.GUIGraph("RRMSGraph", self.IRMSGraphic,2)
         self.RRMSGraph.plot(hour, temperature, pen=pen)
         
         
@@ -594,10 +588,7 @@ class Ui_MainWindow(object):
         
         
         #graph for speed
-        self.speedGraph = graph.PlotWidget(self.SpeedGraphic)
-        self.speedGraph.setGeometry(QtCore.QRect(0, 0, self.SpeedGraphic.width(), self.SpeedGraphic.height()))
-        self.speedGraph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.speedGraph.setBackground('w')
+        self.speedGraph = GUIgraph.GUIGraph("speedGraph", self.SpeedGraphic,3)
         self.speedGraph.plot(hour, temperature, pen=pen)
         
         
@@ -605,10 +596,7 @@ class Ui_MainWindow(object):
         
         
         #graph for battery temperature
-        self.batterytemperature = graph.PlotWidget(self.batteryTemperatureGrahpicsView)
-        self.batterytemperature.setGeometry(QtCore.QRect(0, 0, self.batteryTemperatureGrahpicsView.width(), self.batteryTemperatureGrahpicsView.height()))
-        self.batterytemperature.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.batterytemperature.setBackground('w')
+        self.batterytemperature = GUIgraph.GUIGraph("batteryTemperatureGraph", self.batteryTemperatureGrahpicsView,4)
         self.batterytemperature.plot(hour, temperature, pen=pen)
         
         
@@ -617,10 +605,7 @@ class Ui_MainWindow(object):
         
         
         #graph for Voltages
-        self.voltageGraph = graph.PlotWidget(self.voltageGraphic)
-        self.voltageGraph.setGeometry(QtCore.QRect(0, 0, self.voltageGraphic.width(), self.voltageGraphic.height()))
-        self.voltageGraph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.voltageGraph.setBackground('w')
+        self.voltageGraph = GUIgraph.GUIGraph("voltageGraph", self.voltageGraphic,5)
         self.voltageGraph.plot(hour, temperature, pen=pen)
         
         
@@ -628,10 +613,7 @@ class Ui_MainWindow(object):
         
         
         #graph for discharge rate
-        self.DischargeGraph = graph.PlotWidget(self.dischargeGraphic)
-        self.DischargeGraph.setGeometry(QtCore.QRect(0, 0, self.dischargeGraphic.width(), self.dischargeGraphic.height()))
-        self.DischargeGraph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.DischargeGraph.setBackground('w')
+        self.dischargeGraph = GUIgraph.GUIGraph("dischargeGraph", self.dischargeGraphic,6)
         self.DischargeGraph.plot(hour, temperature, pen=pen)
         
         
