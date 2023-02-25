@@ -614,7 +614,7 @@ class Ui_MainWindow(object):
         
         #graph for discharge rate
         self.dischargeGraph = GUIgraph.GUIGraph("dischargeGraph", self.dischargeGraphic,6)
-        self.DischargeGraph.plot(hour, temperature, pen=pen)
+        self.dischargeGraph.plot(hour, temperature, pen=pen)
         
         
         
