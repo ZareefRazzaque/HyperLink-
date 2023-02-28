@@ -559,12 +559,12 @@ class Ui_MainWindow(object):
         #tempoary graphing data, for testing purposes
         hour = [1,2,3,4,5,6,7,8,9,10]
         temperature = [30,32,34,32,33,31,29,32,35,45]
-        pen = graph.mkPen(color=(255, 0, 0))
+        
         
         #graph for temperature
         
         self.temperatureGraph = GUIgraph.GUIGraph("temperatureGraph", self.temperatureGraphic,0)
-        self.temperatureGraph.plot(hour, temperature, pen)
+        self.temperatureGraph.plot(hour, temperature)
         
         
         
@@ -573,7 +573,7 @@ class Ui_MainWindow(object):
         
         #graph for prms
         self.PRMSGraph = GUIgraph.GUIGraph("PRMSGraph", self.PRMSGraphic,1)
-        self.PRMSGraph.plot(hour, temperature, pen=pen)
+        self.PRMSGraph.plot(hour, temperature)
         
         
         
@@ -581,7 +581,7 @@ class Ui_MainWindow(object):
         
         #graph for rrms
         self.RRMSGraph = GUIgraph.GUIGraph("RRMSGraph", self.IRMSGraphic,2)
-        self.RRMSGraph.plot(hour, temperature, pen=pen)
+        self.RRMSGraph.plot(hour, temperature)
         
         
         
@@ -589,7 +589,7 @@ class Ui_MainWindow(object):
         
         #graph for speed
         self.speedGraph = GUIgraph.GUIGraph("speedGraph", self.SpeedGraphic,3)
-        self.speedGraph.plot(hour, temperature, pen=pen)
+        self.speedGraph.plot(hour, temperature)
         
         
         
@@ -597,7 +597,7 @@ class Ui_MainWindow(object):
         
         #graph for battery temperature
         self.batterytemperature = GUIgraph.GUIGraph("batteryTemperatureGraph", self.batteryTemperatureGrahpicsView,4)
-        self.batterytemperature.plot(hour, temperature, pen=pen)
+        self.batterytemperature.plot(hour, temperature)
         
         
         
@@ -606,7 +606,7 @@ class Ui_MainWindow(object):
         
         #graph for Voltages
         self.voltageGraph = GUIgraph.GUIGraph("voltageGraph", self.voltageGraphic,5)
-        self.voltageGraph.plot(hour, temperature, pen=pen)
+        self.voltageGraph.plot(hour, temperature)
         
         
         
@@ -614,7 +614,7 @@ class Ui_MainWindow(object):
         
         #graph for discharge rate
         self.dischargeGraph = GUIgraph.GUIGraph("dischargeGraph", self.dischargeGraphic,6)
-        self.dischargeGraph.plot(hour, temperature, pen=pen)
+        self.dischargeGraph.plot(hour, temperature)
         
         
         
@@ -645,9 +645,9 @@ class Ui_MainWindow(object):
         self.DashBoardTitle.setText(_translate("MainWindow", "DashBoard"))
         
     def updateGraphs(self):
-        self.DischargeGraph.plot()
+        self.speedGraph.clear()
+        self.speedGraph.plot([1,2,3,4,5],[1,2,34,5,6])
             
-
 
 if __name__ == "__main__":
     import sys
@@ -656,6 +656,7 @@ if __name__ == "__main__":
     MainWindow.showFullScreen()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    ui.updateGraphs()
     MainWindow.show()
     
     sys.exit(app.exec_())
