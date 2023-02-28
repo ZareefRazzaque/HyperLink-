@@ -9,7 +9,7 @@ class GUIGraph():
         self.view = view # the graphics view the graph is held in 
         self.recordnumber = recordnumber # which record in the csv relates to this graph
         
-        self.datashown = [0 for i in range(0,15)]
+        self.datashown = [0 for i in range(0,15)] # this is set to read the last 15 pieces of data
         self.pointer = 0
         
         self.pen = pyqtgraph.mkPen(color=(255, 0, 0))
@@ -17,18 +17,32 @@ class GUIGraph():
         self.graph.setGeometry(QtCore.QRect(0, 0, self.view.width(), self.view.height()))
         self.graph.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         self.graph.setBackground('w')
+        self.graph.plot(  [0 for i in range(0,len(self.datashown))],   self.datashown,   pen= self.pen)
         
-    def plot(self,hour,temperature):
-        self.graph.plot(hour, temperature, pen = self.pen)
+        
+        
+        
+    ############################################################################################################
+    #functions 
+    def plot(self, data):
+        self.clear
+        self.graph.plot([i for i in range(len(data))], data, pen = self.pen)
+        self.datashown = data
+        self.pointer = 0            
+                #how the plot function works is through through drawing a line
+                #the first array details the x axis of the lines points beiing drawn
+                #whist the second line is the y asis of hte lines points 
+        
         
     def clear(self):
         self.graph.clear()
+        self.pointer = 0
+        self.datashown = [0 for i in range(len(self.datashown))]
     
     def update(self, data):
         pass
     
-    def showdata(array1, array2):
-        pass
+
         
     
     
